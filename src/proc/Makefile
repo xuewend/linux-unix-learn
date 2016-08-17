@@ -1,5 +1,5 @@
 
-TEST         = seek_io 
+TEST         = longjump 
 SUBDIR       = ../lib
 LIBPATH      = -L../lib
 LIBNAME      = -ltlpilib 
@@ -8,7 +8,7 @@ CLEANSUBDIRS = $(addsuffix .clean, $(SUBDIR))
 CC        = gcc
 CFLAGS    += -g -Wall -O2 -fPIC
 
-SRC_C     = $(wildcard *.c)
+SRC_C     =  $(addsuffix .c, $(TEST))
 
 
 all:$(SUBDIR) $(TEST)
@@ -19,7 +19,7 @@ $(SUBDIR):
 	@$(MAKE) -C $@
 	
 $(TEST):
-	$(CC) -o $@ seek_io.c $(CFLAGS) $(LIBPATH) $(LIBNAME)
+	$(CC) -o $@ $(SRC_C) $(CFLAGS) $(LIBPATH) $(LIBNAME)
 
 .PHONY: $(SUBDIR) $(CLEANSUBDIRS) clean all
 

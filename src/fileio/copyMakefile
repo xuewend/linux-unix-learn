@@ -1,5 +1,5 @@
 
-TEST         = seek_io 
+TEST         = copy
 SUBDIR       = ../lib
 LIBPATH      = -L../lib
 LIBNAME      = -ltlpilib 
@@ -19,7 +19,7 @@ $(SUBDIR):
 	@$(MAKE) -C $@
 	
 $(TEST):
-	$(CC) -o $@ seek_io.c $(CFLAGS) $(LIBPATH) $(LIBNAME)
+	$(CC) -o $@ $(SRC_C) $(CFLAGS) $(LIBPATH) $(LIBNAME)
 
 .PHONY: $(SUBDIR) $(CLEANSUBDIRS) clean all
 
