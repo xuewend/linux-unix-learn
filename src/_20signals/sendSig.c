@@ -15,12 +15,15 @@ main(int argc, char* argv[])
 	if(argc < 3 || strcmp(argv[1], "--help") == 0)
                 usageErr("%s PID -sig\n", argv[0]);
 	
-	destPid = argv[1];
+		
+	destPid = getLong(argv[1],0,"PID");
 
 	for(;;)
 	{
-		sleep(10);	
+		sleep(10);
+//		printf("kill pid: %ld\n",(long)destPid);
 		kill(destPid,SIGINT);
+		printf("kill pid: %ld done\n",(long)destPid);
 	}
 	
 	return 0;
